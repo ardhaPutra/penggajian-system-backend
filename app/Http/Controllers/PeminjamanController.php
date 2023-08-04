@@ -12,7 +12,7 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        //
+        return Peminjaman::all();
     }
 
     /**
@@ -28,7 +28,7 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Peminjaman::create($request->all());
     }
 
     /**
@@ -50,15 +50,17 @@ class PeminjamanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Peminjaman $peminjaman)
+    public function update(Request $request, $id)
     {
-        //
+        $peminjaman = Peminjaman::findOrFail($id);
+        $peminjaman->update($request->all());
+        return $peminjaman;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Peminjaman $peminjaman)
+    public function destroy(Peminjaman $id)
     {
         //
     }

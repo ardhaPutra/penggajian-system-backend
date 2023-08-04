@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('tabel_negara', function (Blueprint $table) {
             $table->string('pk')->primary();
-            $table->string('nm');
+            $table->string('nm', 255);
             $table->text('ctn')->nullable();
-            $table->dateTime('dateadded')->nullable();
+            $table->dateTime('dateadded');
             $table->integer('addedbyfk')->nullable();
             $table->dateTime('datemodified')->nullable();
             $table->integer('lastuserfk')->nullable();

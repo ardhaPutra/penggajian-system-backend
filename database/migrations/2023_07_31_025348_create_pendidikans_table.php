@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pendidikans', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('tabel_pendidikan', function (Blueprint $table) {
+            $table->string('pk')->primary();
+            $table->string('nm', 255);
+            $table->text('ctn')->nullable();
+            $table->dateTime('dateadded');
+            $table->integer('addedbyfk')->nullable();
+            $table->dateTime('datemodified')->nullable();
+            $table->integer('lastuserfk')->nullable();
         });
     }
 
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pendidikans');
+        Schema::dropIfExists('tabel_pendidikan');
     }
 };

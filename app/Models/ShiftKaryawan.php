@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class ShiftKaryawan extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'NIK',
+        'Senin',
+        'Selasa',
+        'Rabu',
+        'Kamis',
+        'Jumat',
+        'Sabtu',
+        'Minggu',
+    ];
 }

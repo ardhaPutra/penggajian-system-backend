@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Absensi extends Model
 {
     use HasFactory;
+    protected $table = 'tabel_absensi';
+
+    protected $fillable = [
+        'nm',
+        'ctn',
+        'dateadded',
+        'addedbyfk',
+        'datemodified',
+        'lastuserfk'
+    ];
 }

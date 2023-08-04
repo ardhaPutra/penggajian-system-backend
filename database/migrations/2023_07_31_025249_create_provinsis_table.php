@@ -11,9 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('provinsis', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('tabel_provinsi', function (Blueprint $table) {
+            $table->bigInteger('pk')->primary();
+            $table->integer('negarafk');
+            $table->string('nm', 255);
+            $table->text('ctn')->nullable();
+            $table->dateTime('dateadded');
+            $table->integer('addedbyfk')->nullable();
+            $table->dateTime('datemodified')->nullable();
+            $table->integer('lastuserfk')->nullable();
         });
     }
 
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('provinsis');
+        Schema::dropIfExists('tabel_peminjaman');
     }
 };

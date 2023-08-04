@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use HasFactory;
-
     protected $table = 'tabel_department';
 
     protected $fillable = [

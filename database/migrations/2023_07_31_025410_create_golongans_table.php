@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('golongans', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('tabel_golongan', function (Blueprint $table) {
+            $table->bigInteger('pk')->primary();
+            $table->string('nm', 255);
+            $table->text('ctn')->nullable();
+            $table->dateTime('dateadded');
+            $table->integer('addedbyfk')->nullable();
+            $table->dateTime('datemodified')->nullable();
+            $table->integer('lastuserfk')->nullable();
         });
     }
 
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('golongans');
+        Schema::dropIfExists('tabel_golongan');
     }
 };

@@ -12,7 +12,7 @@ class GolonganController extends Controller
      */
     public function index()
     {
-        //
+        return Golongan::all();
     }
 
     /**

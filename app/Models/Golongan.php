@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Golongan extends Model
 {
     use HasFactory;
+    protected $table = 'tabel_golongan';
+
+    protected $fillable = [
+        'nm',
+        'ctn',
+        'dateadded',
+        'addedbyfk',
+        'datemodified',
+        'lastuserfk'
+    ];
 }
