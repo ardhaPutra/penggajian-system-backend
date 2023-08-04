@@ -12,8 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_kota', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->bigInteger('pk')->primary();
+            $table->integer('negarafk');
+            $table->integer('provinsifk');
+            $table->string('nm', 255);
+            $table->text('ctn')->nullable();
+            $table->dateTime('dateadded');
+            $table->integer('addedbyfk')->nullable();
+            $table->dateTime('datemodifed')->nullable();
+            $table->integer('lastuserfk')->nullable();
         });
     }
 

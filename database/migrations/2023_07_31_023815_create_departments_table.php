@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_departemen', function (Blueprint $table) {
-            $table->string('pk')->primary();
-            $table->string('nm');
+            $table->bigInteger('pk')->primary();
+            $table->string('nm', 255);
             $table->text('ctn')->nullable();
-            $table->dateTime('dateadded')->nullable();
+            $table->dateTime('dateadded');
             $table->integer('addedbyfk')->nullable();
             $table->dateTime('datemodified')->nullable();
             $table->integer('lastuserfk')->nullable();

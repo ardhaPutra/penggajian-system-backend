@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_golongan', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->bigInteger('pk')->primary();
+            $table->string('nm', 255);
+            $table->text('ctn')->nullable();
+            $table->dateTime('dateadded');
+            $table->integer('addedbyfk')->nullable();
+            $table->dateTime('datemodified')->nullable();
+            $table->integer('lastuserfk')->nullable();
         });
     }
 
