@@ -12,7 +12,7 @@ class PendidikanController extends Controller
      */
     public function index()
     {
-        //
+        return Pendidikan::all();
     }
 
     /**
@@ -28,7 +28,7 @@ class PendidikanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Pendidikan::create($request->all());
     }
 
     /**
@@ -42,7 +42,7 @@ class PendidikanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pendidikan $pendidikan)
+    public function edit($id)
     {
         //
     }
@@ -50,16 +50,20 @@ class PendidikanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pendidikan $pendidikan)
+    public function update(Request $request, $id)
     {
-        //
+        $pendidikan = Pendidikan::findOrFail($id);
+        $pendidikan->update($request->all());
+        return $pendidikan;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pendidikan $pendidikan)
+    public function destroy($id)
     {
-        //
+        $pendidikan = Pendidikan::findOrFail($id);
+        $pendidikan->delete();
+        return response()->json(['message' => 'Data pendidikan berhasil dihapus']);
     }
 }

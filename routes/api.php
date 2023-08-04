@@ -14,6 +14,7 @@ use App\Http\Controllers\PenggajianController;
 use App\Http\Controllers\ProvinsiController;
 use App\Http\Controllers\ShiftKaryawanController;
 use App\Http\Controllers\TunjanganHariRayaController;
+use App\Http\Controllers\AbsensiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,5 @@ Route::resource('penggajian', PenggajianController::class);
 Route::resource('provinsi', ProvinsiController::class);
 Route::resource('shift_karyawan', ShiftKaryawanController::class);
 Route::resource('tunjangan_hari_raya', TunjanganHariRayaController::class);
+Route::resource('absensi', AbsensiController::class);
+Route::resource('uang_saku', UangSakuController::class);

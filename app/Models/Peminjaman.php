@@ -8,4 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Peminjaman extends Model
 {
     use HasFactory;
+
+    protected $table = 'peminjaman';
+
+    protected $fillable = [
+        'kccabang',
+        'kdPjm',
+        'Tanggal',
+        'NIK',
+        'MaxPeminjaman',
+        'JmlPeminjaman',
+        'SaldoPiutang',
+        'sukubunga',
+        'maxAngsuran',
+        'TotalPiutang',
+        'note',
+        'KasbonFlag',
+        'posting',
+        'rekpinjam',
+        'transfer',
+        'akunkas',
+        'useradd',
+        'dateadd',
+        'useredit',
+        'dateedit',
+    ];
 }

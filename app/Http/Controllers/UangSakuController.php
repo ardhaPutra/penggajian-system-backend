@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kota;
+use App\Models\UangSaku;
 use Illuminate\Http\Request;
 
-class KotaController extends Controller
+class UangSakuController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Kota::all();
+        //
     }
 
     /**
@@ -28,13 +28,13 @@ class KotaController extends Controller
      */
     public function store(Request $request)
     {
-        return Kota::create($request->all());
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Kota $kota)
+    public function show(UangSaku $uangSaku)
     {
         //
     }
@@ -42,7 +42,7 @@ class KotaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kota $kota)
+    public function edit(UangSaku $uangSaku)
     {
         //
     }
@@ -50,20 +50,16 @@ class KotaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kota $kota)
+    public function update(Request $request, UangSaku $uangSaku)
     {
-        $kota = Kota::findOrFail($id);
-        $kota->update($request->all());
-        return $kota;
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kota $kota)
+    public function destroy(UangSaku $uangSaku)
     {
-        $kota = Kota::findOrFail($id);
-        $kota->delete();
-        return response()->json(['message' => 'Data kota berhasil dihapus']);
+        //
     }
 }
