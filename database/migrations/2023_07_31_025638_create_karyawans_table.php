@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('tabel_karyawan', function (Blueprint $table) {
             $table->integer('kdcabang');
-            $table->string('nik')->primary();
+            $table->string('NIK');
             $table->string('nmKar');
             $table->integer('Sex');
-            $table->date('tglmasuk');
+            $table->date('tglmsk');
             $table->date('tglkeluar');
             $table->text('almt');
             $table->integer('kdkota');
@@ -24,9 +24,9 @@ return new class extends Migration
             $table->integer('kdnegara');
             $table->text('tlp');
             $table->text('statusKar');
-            $table->date('awalKontrak')->nullable();
-            $table->date('akhirKontrak')->nullable();
-            $table->text('noSuratKontrak')->nullable();
+            $table->dateTime('awalKontrak');
+            $table->dateTime('akhirKontrak');
+            $table->text('noSuratKontrak');
             $table->integer('kdDep');
             $table->integer('kdJab');
             $table->integer('kdgol');
@@ -49,7 +49,7 @@ return new class extends Migration
             $table->integer('salHutang');
             $table->text('almtAsal');
             $table->text('tmpLahir');
-            $table->date('tglLahir');
+            $table->dateTime('tglLahir');
             $table->integer('kdagama');
             $table->text('statusNikah')->nullable();
             $table->integer('statusSuami')->nullable();
@@ -58,12 +58,12 @@ return new class extends Migration
             $table->integer('pendidikan');
             $table->boolean('aktif');
             $table->text('note')->nullable();
-            $table->text('foto');
+            $table->text('foto')->nullable();
             $table->integer('ship')->nullable();
             $table->text('useradd')->nullable();
-            $table->date('dateadd')->nullable();
-            $table->text('useredit')->nullable();
-            $table->date('dateedit')->nullable();
+            $table->dateTime('dateadd')->nullable();
+            $table->text('Useredit')->nullable();
+            $table->dateTime('Dateedit')->nullable();
         });
     }
 

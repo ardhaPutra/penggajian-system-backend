@@ -11,9 +11,27 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tabel_peminjaman', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('tabel_peminjaman    ', function (Blueprint $table) {
+            $table->integer('kdCabang');
+            $table->text('kdPjm');
+            $table->dateTime('Tanggal');
+            $table->text('NIK');
+            $table->integer('MaxPeminjaman');
+            $table->integer('JmlPeminjaman');
+            $table->integer('SaldoPiutang');
+            $table->integer('sukubunga');
+            $table->integer('maxAngsuran');
+            $table->integer('totalPiutang');
+            $table->text('note');
+            $table->boolean('KasBonFlag');
+            $table->boolean('posting');
+            $table->text('rekpinjam');
+            $table->boolean('Transfer');
+            $table->text('akunkas');
+            $table->text('Useradd');
+            $table->datetime('dateadd');
+            $table->text('Useredit');
+            $table->datetime('Datetime');
         });
     }
 

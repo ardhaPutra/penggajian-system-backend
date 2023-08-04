@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('tabel_penggajian', function (Blueprint $table) {
             $table->integer('kdcabang');
-            $table->string('kdGaji')->primary();
-            $table->date('Tanggal');
+            $table->text('kdGaji');
+            $table->dateTime('Tanggal');
+            $table->integer('Bulan');
+            $table->integer('Tahun');
             $table->text('NIK');
             $table->text('Departement');
             $table->text('Jabatan');
@@ -27,7 +29,7 @@ return new class extends Migration
             $table->integer('TKomparatif');
             $table->integer('TTransport');
             $table->integer('Bonus');
-            $table->integer('TJAMSOSTEK');
+            $table->integer('TJamsostek');
             $table->integer('TmasaKerja');
             $table->integer('TLain');
             $table->integer('UangLembur');
@@ -48,17 +50,17 @@ return new class extends Migration
             $table->integer('Rounded');
             $table->integer('Pajak');
             $table->integer('NettGaji');
-            $table->text('Memo')->nullable();
+            $table->text('Note')->nullable();
             $table->boolean('posting');
             $table->integer('Transfer')->nullable();
             $table->text('rekGaji')->nullable();
             $table->text('rekbyrpiutang')->nullable();
             $table->text('rekbungapiutang')->nullable();
             $table->text('rek')->nullable();
-            $table->text('useradd')->nullable();
+            $table->text('Useradd')->nullable();
             $table->date('dateadd')->nullable();
-            $table->text('useredit')->nullable();
-            $table->date('dateedit')->nullable();
+            $table->text('Useredit')->nullable();
+            $table->date('Dateedit')->nullable();
             $table->integer('pjkm')->nullable();
         });
     }
