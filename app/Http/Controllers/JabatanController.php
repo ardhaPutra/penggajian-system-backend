@@ -12,7 +12,9 @@ class JabatanController extends Controller
      */
     public function index()
     {
-        return Jabatan::all();
+        return Jabatan::whereNull('deleted_at')
+                ->orderBy('created_at', 'desc')
+                ->get();
     }
 
     /**
@@ -28,7 +30,19 @@ class JabatanController extends Controller
      */
     public function store(Request $request)
     {
-        return Jabatan::create($request->all());
+        $validatedData = $request->validate([
+            'nm' => 'required|max:50',
+            'tJab' => 'required|integer',
+            'ctn' => 'nullable|string',
+        ]);
+
+        // Simpan data ke database menggunakan metode create dari model Jabatan
+        $jabatan = Jabatan::create($validatedData);
+
+        return response()->json([
+            'message' => 'Data jabatan berhasil disimpan',
+            'data' => $jabatan,
+        ]);
     }
 
     /**
@@ -52,18 +66,27 @@ class JabatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $jabatan = Jabatan::findOrFail($id);
-        $jabatan->update($request->all());
-        return $jabatan;
+        $validatedData = $request->validate([
+            'nm' => 'required|max:50',
+            'tJab' => 'required|integer',
+            'ctn' => 'nullable|string',
+        ]);
+
+        $jabatan = Jabatan::where('pk', $id)->update($validatedData);
+
+        return response()->json([
+            'message' => 'Data jabatan berhasil diupdate',
+            'data' => $jabatan,
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Jabatan $jabatan)
+    public function destroy($id)
     {
-        $jabatan = Jabatan::findOrFail($id);
-        $jabatan->delete();
+        $jabatan = Jabatan::where('pk', $id)->update(['deleted_at' => now()]);
+
         return response()->json(['message' => 'Data jabatan berhasil dihapus']);
     }
 }

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('addedbyfk')->nullable();
             $table->dateTime('datemodified')->nullable();
             $table->integer('lastuserfk')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

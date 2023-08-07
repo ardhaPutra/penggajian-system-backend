@@ -12,7 +12,9 @@ class ProvinsiController extends Controller
      */
     public function index()
     {
-        //
+        return Provinsi::whereNull('deleted_at')
+                ->orderBy('created_at', 'desc')
+                ->get();
     }
 
     /**
@@ -28,7 +30,18 @@ class ProvinsiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nm' => 'required|max:50',
+            'ctn' => 'nullable|string',
+        ]);
+
+        // Simpan data ke database menggunakan metode create dari model Provinsi
+        $provinsi = Provinsi::create($validatedData);
+
+        return response()->json([
+            'message' => 'Data provinsi berhasil disimpan',
+            'data' => $provinsi,
+        ]);
     }
 
     /**
@@ -50,16 +63,28 @@ class ProvinsiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Provinsi $provinsi)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nm' => 'required|max:50',
+            'ctn' => 'nullable|string',
+        ]);
+
+        $provinsi = Provinsi::where('pk', $id)->update($validatedData);
+
+        return response()->json([
+            'message' => 'Data provinsi berhasil diupdate',
+            'data' => $provinsi,
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Provinsi $provinsi)
+    public function destroy($id)
     {
-        //
+        $provinsi = Provinsi::where('pk', $id)->update(['deleted_at' => now()]);
+
+        return response()->json(['message' => 'Data provinsi berhasil dihapus']);
     }
 }

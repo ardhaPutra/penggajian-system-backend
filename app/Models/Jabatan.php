@@ -15,10 +15,6 @@ class Jabatan extends Model
         'nm',
         'tJab',
         'ctn',
-        'dateadded',
-        'addedbyfk',
-        'datemodified',
-        'lastuserfk'
     ];
 
 }

@@ -12,7 +12,9 @@ class NegaraController extends Controller
      */
     public function index()
     {
-        return Negara::all();
+        return Negara::whereNull('deleted_at')
+                ->orderBy('created_at', 'desc')
+                ->get();
     }
 
     /**
@@ -28,7 +30,18 @@ class NegaraController extends Controller
      */
     public function store(Request $request)
     {
-        return Negara::create($request->all());
+        $validatedData = $request->validate([
+            'nm' => 'required|max:50',
+            'ctn' => 'nullable|string',
+        ]);
+
+        // Simpan data ke database menggunakan metode create dari model Negara
+        $negara = Negara::create($validatedData);
+
+        return response()->json([
+            'message' => 'Data negara berhasil disimpan',
+            'data' => $negara,
+        ]);
     }
 
     /**
@@ -52,18 +65,26 @@ class NegaraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $negara = Negara::findOrFail($id);
-        $negara->update($request->all());
-        return $negara;
+        $validatedData = $request->validate([
+            'nm' => 'required|max:50',
+            'ctn' => 'nullable|string',
+        ]);
+
+        $negara = Negara::where('pk', $id)->update($validatedData);
+
+        return response()->json([
+            'message' => 'Data negara berhasil diupdate',
+            'data' => $negara,
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Negara $negara)
+    public function destroy($id)
     {
-        $negara = Negara::findOrFail($id);
-        $negara->delete();
+        $negara = Negara::where('pk', $id)->update(['deleted_at' => now()]);
+
         return response()->json(['message' => 'Data negara berhasil dihapus']);
     }
 }

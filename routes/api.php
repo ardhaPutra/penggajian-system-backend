@@ -31,16 +31,41 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('jabatan', JabatanController::class);
+Route::group(['prefix' => 'negara'], function () {
+    Route::get('/', [NegaraController::class, 'index'])->name('negara.index');
+    Route::post('/store', [NegaraController::class, 'store'])->name('negara.store');
+    Route::post('/update/{pk}', [NegaraController::class, 'update'])->name('negara.update');
+    Route::delete('/delete/{pk}', [NegaraController::class, 'destroy'])->name('negara.delete');
+});
+
+Route::group(['prefix' => 'provinsi'], function () {
+    Route::get('/', [ProvinsiController::class, 'index'])->name('provinsi.index');
+    Route::post('/store', [ProvinsiController::class, 'store'])->name('provinsi.store');
+    Route::post('/update/{pk}', [ProvinsiController::class, 'update'])->name('provinsi.update');
+    Route::delete('/delete/{pk}', [ProvinsiController::class, 'destroy'])->name('provinsi.delete');
+});
+
+Route::group(['prefix' => 'Kota'], function () {
+    Route::get('/', [KotaController::class, 'index'])->name('kota.index');
+    Route::post('/store', [KotaController::class, 'store'])->name('kota.store');
+    Route::post('/update/{pk}', [KotaController::class, 'update'])->name('kota.update');
+    Route::delete('/delete/{pk}', [KotaController::class, 'destroy'])->name('kota.delete');
+});
+
+Route::group(['prefix' => 'jabatan'], function () {
+    Route::get('/', [JabatanController::class, 'index'])->name('jabatan.index');
+    Route::post('/store', [JabatanController::class, 'store'])->name('jabatan.store');
+    Route::post('/update/{pk}', [JabatanController::class, 'update'])->name('jabatan.update');
+    Route::delete('/delete/{pk}', [JabatanController::class, 'destroy'])->name('jabatan.delete');
+});
+
 Route::resource('department', DepartmentController::class);
 Route::resource('golongan', GolonganController::class);
 Route::resource('karyawan', KaryawanController::class);
 Route::resource('kota', KotaController::class);
-Route::resource('negara', NegaraController::class);
 Route::resource('peminjaman', PeminjamanController::class);
 Route::resource('pendidikan', PendidikanController::class);
 Route::resource('penggajian', PenggajianController::class);
-Route::resource('provinsi', ProvinsiController::class);
 Route::resource('shift_karyawan', ShiftKaryawanController::class);
 Route::resource('tunjangan_hari_raya', TunjanganHariRayaController::class);
 Route::resource('absensi', AbsensiController::class);
