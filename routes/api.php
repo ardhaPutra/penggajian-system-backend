@@ -15,6 +15,19 @@ use App\Http\Controllers\ProvinsiController;
 use App\Http\Controllers\ShiftKaryawanController;
 use App\Http\Controllers\TunjanganHariRayaController;
 use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\JenisKelaminController;
+use App\Models\JenisKelamin;
+use App\Models\Agama;
+use App\Models\Negara;
+use App\Models\Provinsi;
+use App\Models\Kota;
+use App\Models\StatusPerkawinan;
+use App\Models\StatusPekerjaanSuamiIstri;
+use App\Models\Pendidikan;
+use App\Models\StatusPegawai;
+use App\Models\Department;
+use App\Models\Jabatan;
+use App\Models\StatusGaji;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +100,13 @@ Route::group(['prefix' => 'karyawan'], function () {
     Route::delete('/delete/{pk}', [KaryawanController::class, 'destroy'])->name('karyawan.delete');
 });
 
+Route::group(['prefix' => 'absensi'], function () {
+    Route::get('/', [AbsensiController::class, 'index'])->name('absensi.index');
+    Route::post('/store', [AbsensiController::class, 'store'])->name('absensi.store');
+    Route::post('/update/{pk}', [AbsensiController::class, 'update'])->name('absensi.update');
+    Route::delete('/delete/{pk}', [AbsensiController::class, 'destroy'])->name('absensi.delete');
+});
+
 Route::group(['prefix' => 'shift-karyawan'], function () {
     Route::get('/', [ShiftKaryawanController::class, 'index'])->name('shiftkaryawan.index');
     Route::post('/store', [ShiftKaryawanController::class, 'store'])->name('shiftkaryawan.store');
@@ -116,9 +136,22 @@ Route::group(['prefix' => 'tunjangan-hari-raya'], function () {
 });
 
 Route::group(['prefix' => 'penggajian'], function () {
-    Route::get('/', [TunjanganHariRayaController::class, 'index'])->name('tunjanganhariraya.index');
-    Route::post('/store', [TunjanganHariRayaController::class, 'store'])->name('tunjanganhariraya.store');
-    Route::post('/update/{pk}', [TunjanganHariRayaController::class, 'update'])->name('tunjanganhariraya.update');
-    Route::delete('/delete/{pk}', [TunjanganHariRayaController::class, 'destroy'])->name('tunjanganhariraya.delete');
+    Route::get('/', [PenggajianController::class, 'index'])->name('penggajian.index');
+    Route::post('/store', [PenggajianController::class, 'store'])->name('penggajian.store');
+    Route::post('/update/{pk}', [PenggajianController::class, 'update'])->name('penggajian.update');
+    Route::delete('/delete/{pk}', [PenggajianController::class, 'destroy'])->name('penggajian.delete');
 });
+
+Route::get('/jenis-kelamin', function () {return JenisKelamin::all();});
+Route::get('/agama', function () {return Agama::all();});
+Route::get('/pilih-negara', function () {return Negara::all();});
+Route::get('/pilih-provinsi', function () {return Provinsi::all();});
+Route::get('/pilih-kota', function () {return Kota::all();});
+Route::get('/status-perkawinan', function () {return StatusPerkawinan::all();});
+Route::get('/status-pekerjaan-suami-istri', function () {return StatusPekerjaanSuamiIstri::all();});
+Route::get('/status-pegawai', function () {return StatusPegawai::all();});
+Route::get('/pilih-pendidikan', function () {return Pendidikan::all();});
+Route::get('/pilih-departemen', function () {return Department::all();});
+Route::get('/pilih-jabatan', function () {return Jabatan::all();});
+Route::get('/status-gaji', function () {return StatusGaji::all();});
 

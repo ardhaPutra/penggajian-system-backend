@@ -11,7 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tabel_penggajian', function (Blueprint $table) {
+        Schema::create('tabel_agama', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -22,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Schema::table('tabel_shift_karyawan', function (Blueprint $table) {
-        //     $table->dropColumn('id');
-        // });
+        Schema::dropIfExists('tabel_agama');
     }
 };

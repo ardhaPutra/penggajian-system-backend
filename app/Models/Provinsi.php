@@ -9,7 +9,7 @@ class Provinsi extends Model
 {
     use HasFactory;
 
-    protected $table = 'tabel_negara';
+    protected $table = 'tabel_provinsi';
 
     protected $fillable = [
         'pk',
