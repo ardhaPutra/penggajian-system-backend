@@ -11,11 +11,22 @@ class Absensi extends Model
     protected $table = 'tabel_absensi';
 
     protected $fillable = [
-        'nm',
-        'ctn',
-        'dateadded',
-        'addedbyfk',
-        'datemodified',
-        'lastuserfk'
+        'tanggal',
+        'nik',
+        'kdcabang',
+        'jammasuk',
+        'jamkeluar',
+        'jmljamkerja',
+        'jmljamlembur',
+        'ijin',
+        'alpa',
+        'sakit',
+        'terlambat',
+        'potuangsaku',
+        'status',
+        'ket',
+        'halfdayflag',
+        'lemburharilibur',
+        'koordinat',
     ];
 }

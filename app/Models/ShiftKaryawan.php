@@ -9,6 +9,8 @@ class ShiftKaryawan extends Model
 {
     use HasFactory;
 
+    protected $table = 'tabel_shift_karyawan';
+
     protected $fillable = [
         'NIK',
         'Senin',

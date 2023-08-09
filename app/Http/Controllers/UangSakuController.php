@@ -12,7 +12,9 @@ class UangSakuController extends Controller
      */
     public function index()
     {
-        //
+        return UangSaku::whereNull('deleted_at')
+                ->orderBy('created_at', 'desc')
+                ->get();
     }
 
     /**
@@ -28,7 +30,30 @@ class UangSakuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'tanggal'       => 'required',
+            'NIK'           => 'required',
+            'JmlHariKerja'  => 'required',
+            'usperhari'     => 'required',
+            'uangsaku'      => 'required',
+            'potongan'      => 'required',
+            'totalterima'   => 'required',
+            'rounded'       => 'required',
+            'totaluangsaku' => 'required',
+            'note'          => 'nullable|string',
+            'posting'       => 'required',
+            'transfer'      => 'nullable',
+            'rekus'         => 'nullable' ,
+            'akunkas'       => 'nullable',
+        ]);
+
+        // Simpan data ke database menggunakan metode create dari model UangSaku
+        $UangSaku = UangSaku::create($validatedData);
+
+        return response()->json([
+            'message' => 'Data UangSaku berhasil disimpan',
+            'data' => $UangSaku,
+        ]);
     }
 
     /**
@@ -50,16 +75,40 @@ class UangSakuController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, UangSaku $uangSaku)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'tanggal'       => 'required',
+            'NIK'           => 'required',
+            'JmlHariKerja'  => 'required',
+            'usperhari'     => 'required',
+            'uangsaku'      => 'required',
+            'potongan'      => 'required',
+            'totalterima'   => 'required',
+            'rounded'       => 'required',
+            'totaluangsaku' => 'required',
+            'note'          => 'nullable|string',
+            'posting'       => 'required',
+            'transfer'      => 'nullable',
+            'rekus'         => 'nullable' ,
+            'akunkas'       => 'nullable',
+        ]);
+
+        $UangSaku = UangSaku::where('kdcabang', $id)->update($validatedData);
+
+        return response()->json([
+            'message' => 'Data UangSaku berhasil diupdate',
+            'data' => $UangSaku,
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UangSaku $uangSaku)
-    {
-        //
+    public function destroy($id)
+{
+        $UangSaku = UangSaku::where('kdcabang', $id)->update(['deleted_at' => now()]);
+
+        return response()->json(['message' => 'Data UangSaku berhasil dihapus']);
     }
 }

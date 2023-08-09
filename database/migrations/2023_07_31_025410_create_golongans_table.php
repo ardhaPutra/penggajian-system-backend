@@ -15,10 +15,12 @@ return new class extends Migration
             $table->bigInteger('pk')->primary();
             $table->string('nm', 255);
             $table->text('ctn')->nullable();
-            $table->dateTime('dateadded');
+            $table->dateTime('dateadded')->nullable();
             $table->integer('addedbyfk')->nullable();
             $table->dateTime('datemodified')->nullable();
             $table->integer('lastuserfk')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

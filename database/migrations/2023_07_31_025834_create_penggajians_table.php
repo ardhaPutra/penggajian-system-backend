@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_penggajian', function (Blueprint $table) {
-            $table->integer('kdcabang');
-            $table->text('kdGaji');
+            $table->integer('kdcabang')->nullable();
+            $table->text('kdGaji')->primary();
             $table->dateTime('Tanggal');
             $table->integer('Bulan');
             $table->integer('Tahun');
@@ -62,6 +62,8 @@ return new class extends Migration
             $table->text('Useredit')->nullable();
             $table->date('Dateedit')->nullable();
             $table->integer('pjkm')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

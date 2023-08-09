@@ -12,7 +12,9 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        //
+        return Absensi::whereNull('deleted_at')
+                ->orderBy('created_at', 'desc')
+                ->get();
     }
 
     /**
@@ -28,7 +30,32 @@ class AbsensiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'tanggal'           => 'required',
+            'nik'               => 'required',
+            'kdcabang'          => 'required',
+            'jammasuk'          => 'required',
+            'jamkeluar'         => 'required',
+            'jmljamkerja'       => 'required',
+            'jmljamlembur'      => 'required',
+            'ijin'              => 'nullable',
+            'alpa'              => 'nullable',
+            'sakit'             => 'nullable',
+            'terlambat'         => 'nullable',
+            'potuangsaku'       => 'required',
+            'status'            => 'required',
+            'ket'               => 'nullable',
+            'halfdayflag'       => 'required',
+            'lemburharilibur'   => 'required',
+            'koordinat'         => 'nullable',
+        ]);
+
+        $Absensi = Absensi::where('kdAbsen', $id)->update($validatedData);
+
+        return response()->json([
+            'message' => 'Data Absensi berhasil diupdate',
+            'data' => $Absensi,
+        ]);
     }
 
     /**
@@ -50,16 +77,44 @@ class AbsensiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Absensi $absensi)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'tanggal'           => 'required',
+            'nik'               => 'required',
+            'kdcabang'          => 'required',
+            'jammasuk'          => 'required',
+            'jamkeluar'         => 'required',
+            'jmljamkerja'       => 'required',
+            'jmljamlembur'      => 'required',
+            'ijin'              => 'nullable',
+            'alpa'              => 'nullable',
+            'sakit'             => 'nullable',
+            'terlambat'         => 'nullable',
+            'potuangsaku'       => 'required',
+            'status'            => 'required',
+            'ket'               => 'nullable',
+            'halfdayflag'       => 'required',
+            'lemburharilibur'   => 'required',
+            'koordinat'         => 'nullable',
+        ]);
+
+        // Simpan data ke database menggunakan metode create dari model Absensi
+        $Absensi = Absensi::create($validatedData);
+
+        return response()->json([
+            'message' => 'Data Absensi berhasil disimpan',
+            'data' => $Absensi,
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Absensi $absensi)
+    public function destroy($id)
     {
-        //
+        $Absensi = Absensi::where('kdAbsen', $id)->update(['deleted_at' => now()]);
+
+        return response()->json(['message' => 'Data Absensi berhasil dihapus']);
     }
 }

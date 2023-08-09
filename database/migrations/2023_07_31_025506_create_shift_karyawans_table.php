@@ -12,14 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_shift_karyawan', function (Blueprint $table) {
-            $table->text('NIK');
-            $table->integer('Senin', 10)->nullable();
-            $table->integer('Selasa', 10)->nullable();
-            $table->integer('Rabu', 10)->nullable();
-            $table->integer('Kamis', 10)->nullable();
-            $table->integer('Jumat', 10)->nullable();
-            $table->integer('Sabtu', 10)->nullable();
-            $table->integer('Minggu', 10)->nullable();
+            $table->id();
+            $table->string('NIK');
+            $table->integer('Senin')->nullable();
+            $table->integer('Selasa')->nullable();
+            $table->integer('Rabu')->nullable();
+            $table->integer('Kamis')->nullable();
+            $table->integer('Jumat')->nullable();
+            $table->integer('Sabtu')->nullable();
+            $table->integer('Minggu')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

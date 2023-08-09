@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_tunjangan_hari_raya', function (Blueprint $table) {
-            $table->integer('kdCabang');
-            $table->text('kdTHR');
+            $table->integer('kdCabang')->nullable();
+            $table->bigInteger('kdTHR')->primary();
             $table->dateTime('tanggal');
             $table->text('NIK');
             $table->integer('JmlPeriodeTHR');
@@ -34,6 +34,8 @@ return new class extends Migration
             $table->dateTime('dateadd')->nullable();
             $table->text('Useredit')->nullable();
             $table->dateTime('Dateedit')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

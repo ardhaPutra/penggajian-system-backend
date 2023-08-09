@@ -11,8 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tabel_absensi', function (Blueprint $table) {
-            $table->id();
+        Schema::table('tabel_penggajian', function (Blueprint $table) {
             $table->timestamps();
             $table->softDeletes();
         });
@@ -23,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tabel_absensi');
+        // Schema::table('tabel_shift_karyawan', function (Blueprint $table) {
+        //     $table->dropColumn('id');
+        // });
     }
 };

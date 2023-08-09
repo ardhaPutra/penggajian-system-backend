@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_karyawan', function (Blueprint $table) {
-            $table->integer('kdcabang');
+            $table->integer('kdcabang')->primary();
             $table->string('NIK');
             $table->string('nmKar');
             $table->integer('Sex');
@@ -64,6 +64,8 @@ return new class extends Migration
             $table->dateTime('dateadd')->nullable();
             $table->text('Useredit')->nullable();
             $table->dateTime('Dateedit')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

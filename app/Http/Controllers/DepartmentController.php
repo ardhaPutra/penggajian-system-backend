@@ -12,7 +12,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return Department::all();
+        return Department::whereNull('deleted_at')
+                ->orderBy('created_at', 'desc')
+                ->get();
     }
 
     /**
@@ -28,7 +30,18 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        return Department::create($request->all());
+        $validatedData = $request->validate([
+            'nm' => 'required|max:50',
+            'ctn' => 'nullable|string',
+        ]);
+
+        // Simpan data ke database menggunakan metode create dari model Department
+        $Department = Department::create($validatedData);
+
+        return response()->json([
+            'message' => 'Data Department berhasil disimpan',
+            'data' => $Department,
+        ]);
     }
 
     /**
@@ -52,18 +65,26 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $department = Department::findOrFail($id);
-        $department->update($request->all());
-        return $department;
+        $validatedData = $request->validate([
+            'nm' => 'required|max:50',
+            'ctn' => 'nullable|string',
+        ]);
+
+        $Department = Department::where('pk', $id)->update($validatedData);
+
+        return response()->json([
+            'message' => 'Data Department berhasil diupdate',
+            'data' => $Department,
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Department $department)
+    public function destroy($id)
     {
-        $jabatan = Department::findOrFail($id);
-        $jabatan->delete();
-        return response()->json(['message' => 'Data jabatan berhasil dihapus']);
+        $Department = Department::where('pk', $id)->update(['deleted_at' => now()]);
+
+        return response()->json(['message' => 'Data Department berhasil dihapus']);
     }
 }

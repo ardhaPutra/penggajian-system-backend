@@ -12,7 +12,9 @@ class PendidikanController extends Controller
      */
     public function index()
     {
-        return Pendidikan::all();
+        return Pendidikan::whereNull('deleted_at')
+                ->orderBy('created_at', 'desc')
+                ->get();
     }
 
     /**
@@ -28,7 +30,18 @@ class PendidikanController extends Controller
      */
     public function store(Request $request)
     {
-        return Pendidikan::create($request->all());
+        $validatedData = $request->validate([
+            'nm' => 'required|max:50',
+            'ctn' => 'nullable|string',
+        ]);
+
+        // Simpan data ke database menggunakan metode create dari model Pendidikan
+        $Pendidikan = Pendidikan::create($validatedData);
+
+        return response()->json([
+            'message' => 'Data Pendidikan berhasil disimpan',
+            'data' => $Pendidikan,
+        ]);
     }
 
     /**
@@ -52,9 +65,17 @@ class PendidikanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pendidikan = Pendidikan::findOrFail($id);
-        $pendidikan->update($request->all());
-        return $pendidikan;
+        $validatedData = $request->validate([
+            'nm' => 'required|max:50',
+            'ctn' => 'nullable|string',
+        ]);
+
+        $Pendidikan = Pendidikan::where('pk', $id)->update($validatedData);
+
+        return response()->json([
+            'message' => 'Data Pendidikan berhasil diupdate',
+            'data' => $Pendidikan,
+        ]);
     }
 
     /**
@@ -62,8 +83,8 @@ class PendidikanController extends Controller
      */
     public function destroy($id)
     {
-        $pendidikan = Pendidikan::findOrFail($id);
-        $pendidikan->delete();
-        return response()->json(['message' => 'Data pendidikan berhasil dihapus']);
+        $Pendidikan = Pendidikan::where('pk', $id)->update(['deleted_at' => now()]);
+
+        return response()->json(['message' => 'Data Pendidikan berhasil dihapus']);
     }
 }
