@@ -9,7 +9,7 @@ class StatusPekerjaanSuamiIstri extends Model
 {
     use HasFactory;
 
-    protected $table = 'status_pekerjaan_suami_istri';
+    protected $table = 'tabel_status_pekerjaan_suami_istri';
 
     protected $fillable = [
         'nama',

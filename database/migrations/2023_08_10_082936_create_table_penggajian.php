@@ -12,36 +12,33 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_penggajian', function (Blueprint $table) {
-            $table->integer('kdcabang')->nullable();
-            $table->text('kdGaji')->primary();
+
+            $table->id();
             $table->dateTime('Tanggal');
-            $table->integer('Bulan');
-            $table->integer('Tahun');
             $table->text('NIK');
-            $table->text('Departement');
-            $table->text('Jabatan');
-            $table->text('StatusGaji');
+            $table->integer('gaji_bulan')->nullable();
+            $table->integer('tahun')->nullable();
             $table->integer('JmlHariEfektif');
             $table->integer('JmlHariKerja');
             $table->integer('JmlJamLembur');
             $table->integer('GAPOK');
+            $table->integer('TMasaKerja');
             $table->integer('Tjab');
             $table->integer('TKomparatif');
             $table->integer('TTransport');
+            $table->integer('PremiKesehatan');
             $table->integer('Bonus');
-            $table->integer('TJamsostek');
-            $table->integer('TmasaKerja');
             $table->integer('TLain');
             $table->integer('UangLembur');
+            $table->integer('TJamsostek');
             $table->integer('GajiBruto');
             $table->integer('Kasbon');
-            $table->integer('SaldoUtang');
             $table->integer('AngsuranMin');
             $table->integer('AngsuranTambahan');
             $table->integer('BungaAngsuran');
+            $table->integer('PKoperasi');
             $table->integer('PPph21');
             $table->integer('PJAMSOSTEK');
-            $table->integer('PKoperasi');
             $table->integer('PPensiun');
             $table->integer('PTerlambat');
             $table->integer('PLain');
