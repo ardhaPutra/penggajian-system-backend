@@ -15,8 +15,8 @@ class GaJiBulananSeeder extends Seeder
     public function run(): void
     {
 
-        // Daftar nama jenis kelamin yang bisa dipilih
-        $jenisKelamin = [
+        // Daftar nama bulan yang bisa dipilih
+        $gajiBulanan = [
             'Januari',
             'Februari',
             'Maret',
@@ -31,8 +31,8 @@ class GaJiBulananSeeder extends Seeder
             'Desember',
         ];
 
-        // Loop melalui daftar nama jenis kelamin
-        foreach ($jenisKelamin as $nama) {
+        // Loop melalui daftar nama bulan
+        foreach ($gajiBulanan as $nama) {
             DB::table('tabel_gaji_bulanan')->insert([
                 'nama' => $nama,
                 'created_at' => Carbon::now(),

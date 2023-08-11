@@ -28,6 +28,7 @@ use App\Models\StatusPegawai;
 use App\Models\Department;
 use App\Models\Jabatan;
 use App\Models\StatusGaji;
+use App\Models\GajiBulanan;
 
 /*
 |--------------------------------------------------------------------------
@@ -154,4 +155,6 @@ Route::get('/pilih-pendidikan', function () {return Pendidikan::all();});
 Route::get('/pilih-departemen', function () {return Department::all();});
 Route::get('/pilih-jabatan', function () {return Jabatan::all();});
 Route::get('/status-gaji', function () {return StatusGaji::all();});
+Route::get('/status-absen', function () {return StatusAbsen::all();});
+Route::get('/gaji-bulan-ke', function () {return GajiBulanan::all();});
 
