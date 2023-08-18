@@ -15,7 +15,7 @@ class StatusPerkawinanSeeder extends Seeder
     public function run(): void
     {
         // Daftar nama status perkawinan yang bisa dipilih
-        $statusPerkawinan = ['Menikah', 'Belum Menikah'];
+        $statusPerkawinan = ['Menikah', 'Belum Menikah', 'Duda', 'Janda'];
 
         // Loop melalui daftar nama status perkawinan
         foreach ($statusPerkawinan as $nama) {
