@@ -31,5 +31,6 @@ class TunjanganHariRaya extends Model
         'rekTHR',
         'rekpph',
         'akunkas',
+        'deleted_at',
     ];
 }

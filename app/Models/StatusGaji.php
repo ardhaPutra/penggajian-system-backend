@@ -13,5 +13,6 @@ class StatusGaji extends Model
 
     protected $fillable = [
         'nama',
+        'deleted_at',
     ];
 }

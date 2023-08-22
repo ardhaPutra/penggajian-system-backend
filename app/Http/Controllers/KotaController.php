@@ -18,14 +18,6 @@ class KotaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -42,22 +34,6 @@ class KotaController extends Controller
             'message' => 'Data kota berhasil disimpan',
             'data' => $kota,
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Kota $kota)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Kota $kota)
-    {
-        //
     }
 
     /**

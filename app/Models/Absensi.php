@@ -28,5 +28,6 @@ class Absensi extends Model
         'halfdayflag',
         'lemburharilibur',
         'koordinat',
+        'deleted_at',
     ];
 }

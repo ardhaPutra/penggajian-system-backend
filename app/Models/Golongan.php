@@ -16,6 +16,7 @@ class Golongan extends Model
         'dateadded',
         'addedbyfk',
         'datemodified',
-        'lastuserfk'
+        'lastuserfk',
+        'deleted_at',
     ];
 }

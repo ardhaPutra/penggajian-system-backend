@@ -20,5 +20,6 @@ class Kota extends Model
         'addedbyfk',
         'datemodified',
         'lastuserfk',
+        'deleted_at',
     ];
 }

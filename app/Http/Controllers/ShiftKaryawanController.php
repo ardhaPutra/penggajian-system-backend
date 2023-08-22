@@ -18,14 +18,6 @@ class ShiftKaryawanController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request, $id)
@@ -40,22 +32,6 @@ class ShiftKaryawanController extends Controller
             'message' => 'Data ShiftKaryawan berhasil diupdate',
             'data' => $ShiftKaryawan,
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(ShiftKaryawan $shiftKaryawan)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ShiftKaryawan $shiftKaryawan)
-    {
-        //
     }
 
     /**

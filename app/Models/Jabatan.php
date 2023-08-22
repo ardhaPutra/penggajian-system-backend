@@ -15,6 +15,7 @@ class Jabatan extends Model
         'nm',
         'tJab',
         'ctn',
+        'deleted_at',
     ];
 
 }

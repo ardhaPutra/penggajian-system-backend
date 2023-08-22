@@ -13,5 +13,6 @@ class StatusAbsen extends Model
 
     protected $fillable = [
         'nama',
+        'deleted_at',
     ];
 }

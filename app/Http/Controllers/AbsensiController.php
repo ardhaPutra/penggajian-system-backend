@@ -18,14 +18,6 @@ class AbsensiController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -56,22 +48,6 @@ class AbsensiController extends Controller
             'message' => 'Data Absensi berhasil diupdate',
             'data' => $Absensi,
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Absensi $absensi)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Absensi $absensi)
-    {
-        //
     }
 
     /**

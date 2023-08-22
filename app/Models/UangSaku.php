@@ -28,5 +28,6 @@ class UangSaku extends Model
         'transfer',
         'rekus',
         'akunkas',
+        'deleted_at',
     ];
 }

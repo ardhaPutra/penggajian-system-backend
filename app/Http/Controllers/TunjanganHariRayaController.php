@@ -18,14 +18,6 @@ class TunjanganHariRayaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -57,22 +49,6 @@ class TunjanganHariRayaController extends Controller
             'message' => 'Data TunjanganHariRaya berhasil disimpan',
             'data' => $TunjanganHariRaya,
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(TunjanganHariRaya $tunjanganHariRaya)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(TunjanganHariRaya $tunjanganHariRaya)
-    {
-        //
     }
 
     /**

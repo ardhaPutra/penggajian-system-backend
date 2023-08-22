@@ -20,5 +20,6 @@ class ShiftKaryawan extends Model
         'Jumat',
         'Sabtu',
         'Minggu',
+        'deleted_at',
     ];
 }

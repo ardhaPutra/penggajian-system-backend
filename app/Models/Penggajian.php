@@ -52,7 +52,8 @@ class Penggajian extends Model
         'rekbyrpiutang',
         'rekbungapiutang',
         'rek',
-        'pjkm'
+        'pjkm',
+        'deleted_at',
     ];
 
 }

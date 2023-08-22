@@ -18,14 +18,6 @@ class UangSakuController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -54,22 +46,6 @@ class UangSakuController extends Controller
             'message' => 'Data UangSaku berhasil disimpan',
             'data' => $UangSaku,
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(UangSaku $uangSaku)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(UangSaku $uangSaku)
-    {
-        //
     }
 
     /**

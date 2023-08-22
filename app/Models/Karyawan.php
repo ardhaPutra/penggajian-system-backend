@@ -11,6 +11,8 @@ class Karyawan extends Model
 
     protected $table = 'tabel_karyawan';
 
+    protected $primaryKey = 'kdcabang';
+
     protected $fillable = [
         'NIK',
         'nmKar',
@@ -59,5 +61,6 @@ class Karyawan extends Model
         'note',
         'foto',
         'ship',
+        'deleted_at',
     ];
 }

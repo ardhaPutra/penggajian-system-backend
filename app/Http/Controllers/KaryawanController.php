@@ -46,14 +46,6 @@ class KaryawanController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -100,7 +92,16 @@ class KaryawanController extends Controller
             'pendidikan'        => 'nullable',
             'aktif'             => 'required',
             'note'              => 'nullable',
+            'foto'              => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
+
+         // Simpan foto ke dalam storage Laravel
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $fotoPath = 'foto_karyawan/' . $foto->getClientOriginalName();
+            $foto->move(public_path('foto_karyawan'), $foto->getClientOriginalName());
+            $validatedData['foto'] = asset('/' . $fotoPath);
+        }
 
         // Simpan data ke database menggunakan metode create dari model Karyawan
         $Karyawan = Karyawan::create($validatedData);
@@ -109,22 +110,6 @@ class KaryawanController extends Controller
             'message' => 'Data Karyawan berhasil disimpan',
             'data' => $Karyawan,
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Karyawan $karyawan)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Karyawan $karyawan)
-    {
-        //
     }
 
     /**
@@ -174,9 +159,10 @@ class KaryawanController extends Controller
             'pendidikan'        => 'nullable',
             'aktif'             => 'required',
             'note'              => 'nullable',
+            'foto'              => 'nullable',
         ]);
 
-        $Karyawan = Karyawan::where('kdcabang', $id)->update($validatedData);
+        $Karyawan = Karyawan::find($id)->update($validatedData);
 
         return response()->json([
             'message' => 'Data Karyawan berhasil diupdate',
@@ -189,7 +175,7 @@ class KaryawanController extends Controller
      */
     public function destroy($id)
     {
-        $Karyawan = Karyawan::where('kdcabang', $id)->update(['deleted_at' => now()]);
+        $Karyawan = Karyawan::find($id)->update(['deleted_at' => now()]);
 
         return response()->json(['message' => 'Data Karyawan berhasil dihapus']);
     }

@@ -18,14 +18,6 @@ class PeminjamanController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -54,22 +46,6 @@ class PeminjamanController extends Controller
             'message' => 'Data Peminjaman berhasil disimpan',
             'data' => $Peminjaman,
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Peminjaman $peminjaman)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Peminjaman $peminjaman)
-    {
-        //
     }
 
     /**

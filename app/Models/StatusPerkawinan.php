@@ -13,5 +13,6 @@ class StatusPerkawinan extends Model
 
     protected $fillable = [
         'nama',
+        'deleted_at',
     ];
 }

@@ -32,5 +32,6 @@ class Peminjaman extends Model
         'dateadd',
         'useredit',
         'dateedit',
+        'deleted_at',
     ];
 }
