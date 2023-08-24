@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_karyawan', function (Blueprint $table) {
-            $table->integer('kdcabang')->primary();
+            $table->id();
             $table->string('NIK');
             $table->string('nmKar');
             $table->integer('Sex');
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->text('noSuratKontrak')->nullable();
             $table->integer('kdDep');
             $table->integer('kdJab');
-            $table->integer('kdgol');
+            $table->integer('kdGol')->nullable();
             $table->integer('sisaCuti')->nullable();
             $table->integer('statusTransfer')->nullable();
             $table->text('noRek')->nullable();
@@ -42,11 +42,6 @@ return new class extends Migration
             $table->integer('pJamsostek')->nullable();
             $table->integer('pKoperasi')->nullable();
             $table->integer('statusGaji');
-            $table->integer('defUS');
-            $table->integer('pensiun')->nullable();
-            $table->integer('potpensin')->nullable();
-            $table->integer('salKasbon')->nullable();
-            $table->integer('salHutang')->nullable();
             $table->text('almtAsal');
             $table->text('tmpLahir');
             $table->dateTime('tglLahir');
@@ -55,15 +50,10 @@ return new class extends Migration
             $table->integer('statusSuami')->nullable();
             $table->integer('jmlIstri')->nullable();
             $table->integer('jmlAnak')->nullable();
-            $table->integer('pendidikan');
+            $table->text('pendidikan');
             $table->boolean('aktif');
             $table->text('note')->nullable();
             $table->text('foto')->nullable();
-            $table->integer('ship')->nullable();
-            $table->text('useradd')->nullable();
-            $table->dateTime('dateadd')->nullable();
-            $table->text('Useredit')->nullable();
-            $table->dateTime('Dateedit')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

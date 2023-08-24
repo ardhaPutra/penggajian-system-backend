@@ -11,8 +11,6 @@ class Karyawan extends Model
 
     protected $table = 'tabel_karyawan';
 
-    protected $primaryKey = 'kdcabang';
-
     protected $fillable = [
         'NIK',
         'nmKar',
@@ -43,11 +41,6 @@ class Karyawan extends Model
         'pJamsostek',
         'pKoperasi',
         'statusGaji',
-        'defUS',
-        'pensiun',
-        'potpensin',
-        'salKasbon',
-        'salHutang',
         'almtAsal',
         'tmpLahir',
         'tglLahir',
@@ -60,7 +53,6 @@ class Karyawan extends Model
         'aktif',
         'note',
         'foto',
-        'ship',
         'deleted_at',
     ];
 }

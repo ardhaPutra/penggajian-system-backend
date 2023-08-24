@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_pendidikan', function (Blueprint $table) {
-            $table->string('pk')->primary();
+            $table->integer('pk')->primary();
             $table->string('nm', 255);
             $table->text('ctn')->nullable();
             $table->dateTime('dateadded')->nullable();

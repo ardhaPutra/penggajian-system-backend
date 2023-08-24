@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_jabatan', function (Blueprint $table) {
-            $table->bigInteger('pk')->primary();
+            $table->integer('pk')->primary();
             $table->string('nm', 255);
             $table->integer('tJab');
             $table->text('ctn')->nullable();
