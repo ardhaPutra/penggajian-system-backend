@@ -36,7 +36,7 @@ class Karyawan extends Model
         'atasnama',
         'npwp',
         'gapok',
-        'tJab',
+        'tjab',
         'tKomparatif',
         'pJamsostek',
         'pKoperasi',
