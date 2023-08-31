@@ -12,9 +12,18 @@ class UangSakuController extends Controller
      */
     public function index()
     {
-        return UangSaku::whereNull('deleted_at')
-                ->orderBy('created_at', 'desc')
-                ->get();
+        $uangSakuList = UangSaku::fetchWithDetails()->get();
+
+        return $uangSakuList;
+
+    }
+
+    public function create()
+    {
+        $karyawanList = UangSaku::joinKaryawanDepartemenJabatan()->get();
+
+        return $karyawanList;
+
     }
 
     /**

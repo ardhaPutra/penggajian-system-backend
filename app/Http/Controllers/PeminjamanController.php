@@ -12,9 +12,9 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        return Peminjaman::whereNull('deleted_at')
-                ->orderBy('created_at', 'desc')
-                ->get();
+        $pinjamankasbonList = Peminjaman::fetchWithDetails()->get();
+
+        return $pinjamankasbonList;
     }
 
     /**
@@ -83,8 +83,10 @@ class PeminjamanController extends Controller
      */
     public function destroy($id)
     {
-        $Peminjaman = Peminjaman::where('kdpjm', $id)->update(['deleted_at' => now()]);
 
-        return response()->json(['message' => 'Data Peminjaman berhasil dihapus']);
+        $peminjaman   = Peminjaman::findOrFail($id);
+        $result       = $peminjaman->deleteData();
+
+        return response()->json($result);
     }
 }

@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tabel_peminjaman', function (Blueprint $table) {
-            $table->integer('kdCabang')->nullable();
-            $table->bigInteger('kdPjm')->primary();
-            $table->dateTime('Tanggal');
+        Schema::create('tabel_pinjaman_dan_kasbon', function (Blueprint $table) {
+            $table->id();
+            $table->date('Tanggal');
             $table->text('NIK');
             $table->integer('MaxPeminjaman');
             $table->integer('JmlPeminjaman');
@@ -23,15 +22,6 @@ return new class extends Migration
             $table->integer('maxAngsuran');
             $table->integer('totalPiutang');
             $table->text('note')->nullable();
-            $table->boolean('KasBonFlag');
-            $table->boolean('posting');
-            $table->text('rekpinjam')->nullable();
-            $table->boolean('Transfer')->nullable();
-            $table->text('akunkas')->nullable();
-            $table->text('Useradd')->nullable();
-            $table->datetime('dateadd')->nullable();
-            $table->text('Useredit')->nullable();
-            $table->datetime('Datetime')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -42,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tabel_peminjaman');
+        Schema::dropIfExists('tabel_pinjaman_dan_kasbon');
     }
 };

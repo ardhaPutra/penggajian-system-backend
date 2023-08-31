@@ -12,26 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_uang_saku', function (Blueprint $table) {
-            $table->integer('kdCabang')->nullable();
-            $table->bigInteger('kdPjm')->primary();
-            $table->dateTime('Tanggal');
-            $table->text('NIK');
-            $table->integer('MaxPeminjaman');
-            $table->integer('JmlPeminjaman');
-            $table->integer('SaldoPiutang');
-            $table->integer('sukubunga');
-            $table->integer('maxAngsuran');
-            $table->integer('totalPiutang');
+            $table->id();
+            $table->string('NIK');
+            $table->date('Tanggal');
+            $table->integer('jmlharikerja');
+            $table->integer('jmltransport');
+            $table->integer('jmluangsaku');
+            $table->integer('totalditerima');
             $table->text('note')->nullable();
-            $table->boolean('KasBonFlag');
-            $table->boolean('posting');
-            $table->text('rekpinjam')->nullable();
-            $table->boolean('Transfer')->nullable();
-            $table->text('akunkas')->nullable();
-            $table->text('Useradd')->nullable();
-            $table->datetime('dateadd')->nullable();
-            $table->text('Useredit')->nullable();
-            $table->datetime('Datetime')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
